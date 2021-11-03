@@ -1,27 +1,39 @@
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.List;
 
 class Scan{
 
     public static List<String> rwords;
+    public static List<String> output;
+
+    String status, f_print;
+    int state, counter, buffer;
+    HashMap<Integer, String> id = new HashMap<>();
 
     public static void myScanner() 
     {
         try 
         {
-            //FileReader fr = new FileReader("rwords.txt");
             rwords = Files.readAllLines(Paths.get("rwords.txt"));
-            for (String string : rwords) {
+            for (String string : rwords) 
+            {
                 System.out.println(string);
             }
-            //fr.close();
+            output = Files.readAllLines(Paths.get("sample.txt"));
+            for (String string : output) 
+            {
+                System.out.println(string);
+            }
+
         } 
         catch (Exception e) 
         {
             System.exit(1);
         }
+        //TODO: continue here
     }
 
     public static void main(String[] args) 
