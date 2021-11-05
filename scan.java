@@ -6,6 +6,7 @@ import java.util.List;
 
 class Scan{
 
+    //stores the reserved words and output text for scanning
     public static List<String> rwords;
     public static List<String> output;
 
@@ -13,6 +14,7 @@ class Scan{
     int state, counter, buffer;
     HashMap<Integer, String> id = new HashMap<>();
 
+    //scanner stuff goes here
     public static void myScanner() 
     {
         try 
