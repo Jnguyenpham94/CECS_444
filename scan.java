@@ -3,8 +3,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
-import java.awt.Desktop;
-import java.io.File;
+//import java.awt.Desktop;
+//import java.io.File;
 
 class Scan {
 
@@ -28,22 +28,26 @@ class Scan {
              * string : scanFile) { System.out.println(string); }
              */
             rwords = Files.readAllLines(Paths.get("rwords.txt"));
-            for (String string : rwords) {
-                System.out.println(string);
-            }
+            //for (String string : rwords) {
+            //    System.out.println(string);
+            //}
             output = Files.readAllLines(Paths.get("sample.txt"));
-            for (String string : output) {
-                System.out.println(string);
+            //remove whitespace
+            for (int i = 0; i < output.size(); i++) {
+               String temp = output.get(i).trim();
+               //temp = output.get(i).split("\\n|;").toString();
+               output.set(i, temp);
             }
+            System.out.println(output);
         } catch (IllegalArgumentException iae) {
             System.out.println("File not found");
         } catch (Exception e) {
             System.exit(1);
         }
         // TODO: continue here
-        while (counter < output.size()) {
-            
-        }
+        //while (counter < output.size()) {
+        //    String token = output[counter];
+        //}
     }
 
     public static void main(String[] args) {
