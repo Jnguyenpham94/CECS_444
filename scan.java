@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.awt.Desktop;
 import java.io.File;
-import java.io.IOException;
 
 class Scan{
 
@@ -36,7 +35,6 @@ class Scan{
             {
                 System.out.println(string);
             }
-
         } 
         catch (IllegalArgumentException iae)
         {
