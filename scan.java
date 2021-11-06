@@ -15,7 +15,7 @@ class Scan {
 
     public static String status, f_print;
     public static int state, counter, buffer = 0;
-    HashMap<Integer, String> id = new HashMap<>();
+    public static HashMap<Integer, String> tokens = new HashMap<>();
 
     // scanner stuff goes here
     public static void myScanner() {
@@ -32,6 +32,15 @@ class Scan {
             //    System.out.println(string);
             //}
             output = Files.readAllLines(Paths.get("sample.txt"));
+            scanFile = Files.readAllLines(Paths.get("tokens.txt"));
+            for (int i = 0; i < scanFile.size(); i++) 
+            {
+                String [] temp = scanFile.get(i).split(":(?!\\s)");
+                tokens.put(i, temp[0]);
+            }
+            for (String s : tokens.values()) {
+                System.out.println(s);
+            }
             //remove whitespace
             for (int i = 0; i < output.size(); i++) {
                String temp = output.get(i).trim();
@@ -45,9 +54,11 @@ class Scan {
             System.exit(1);
         }
         // TODO: continue here
-        //while (counter < output.size()) {
-        //    String token = output[counter];
-        //}
+        while (counter < output.size()) {
+            String token = output.get(counter);
+            tokens toks = new tokens();
+            int current_read = toks.getToken(token);
+        }
     }
 
     public static void main(String[] args) {
