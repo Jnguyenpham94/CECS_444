@@ -58,6 +58,9 @@ class Scan {
             String token = output.get(counter);
             tokens toks = new tokens();
             int current_read = toks.getToken(token);
+            if (toks == null) {
+                
+            }
         }
     }
 
