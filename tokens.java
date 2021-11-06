@@ -147,7 +147,7 @@ public class tokens {
                 val = 47;
                 break;
             default:
-                val = 47;
+                val = 48;
                 break;
         }
         return val;
