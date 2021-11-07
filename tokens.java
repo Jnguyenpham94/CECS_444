@@ -86,68 +86,20 @@ public class tokens {
             case ")":
                 val = 27;
                 break;
-            case "--":
+            case "_":
                 val = 28;
                 break;
-            case "++":
+            case "[a-zA-Z]+": //is alphabet in regex
                 val = 29;
                 break;
-            case "+-":
+            case "\\d+"://is digit in regex
                 val = 30;
                 break;
-            case "-+":
+            case " ":
                 val = 31;
                 break;
-            case ">=":
-                val = 32;
-                break;
-            case "<=":
-                val = 33;
-                break;
-            case "!=":
-                val = 34;
-                break;
-            case "<>":
-                val = 35;
-                break;
-            case "==":
-                val = 36;
-                break;
-            case ":=":
-                val = 37;
-                break;
-            case "<<":
-                val = 38;
-                break;
-            case ">>":
-                val = 39;
-                break;
-            case "/=":
-                val = 40;
-                break;
-            case "!!":
-                val = 41;
-                break;
-            case "::":
-                val = 42;
-                break;
-            case " ":
-                val = 43;
-                break;
-            case "\n":
-                val = 44;
-                break;
-            case "[a-zA-Z]+": //is alphabet in regex
-                val = 45;
-                break;
-            case "\\d+"://is digit in regex
-                val = 46;
-                break;
-            case "_":
-                val = 47;
-                break;
             default:
-                val = 48;
+                val = 32;
                 break;
         }
         return val;
