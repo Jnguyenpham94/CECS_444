@@ -86,16 +86,16 @@ public class tokens {
             case ")":
                 val = 27;
                 break;
-            case "_":
+            case "[a-zA-Z]+": //is alphabet in regex
                 val = 28;
                 break;
-            case "[a-zA-Z]+": //is alphabet in regex
+            case "\\d+"://is digit in regex
                 val = 29;
                 break;
-            case "\\d+"://is digit in regex
+            case " ":
                 val = 30;
                 break;
-            case " ":
+            case "_":
                 val = 31;
                 break;
             default:
