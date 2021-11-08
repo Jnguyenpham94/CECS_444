@@ -56,7 +56,7 @@ scinotation: D.D+^(+|-)DDD
 file: [L:(L|D)+]
 file: [L:(L|D)+.(L|D)*]
 string: "([^"]|")*"
-comment: //[^n]*n
+comment: //[^\n]*\n
 comment: /*(*[^/]|[^*])* */
 comment: {*(*[^}]|[^*])**}
 whspace:  
