@@ -15,12 +15,10 @@ class Scan {
 
     public static String status, f_print;
     public static int state, counter, buffer = 0;
-    public static HashMap<Integer, String> tokens = new HashMap<>();
+    public static HashMap<String, Integer> tokens = new HashMap<>();
 
     // scanner stuff goes here
     public static void myScanner() {
-        //Desktop dtop = Desktop.getDesktop();
-        //File directory = null;
         try {
             rwords = Files.readAllLines(Paths.get("rwords.txt"));
             output = Files.readAllLines(Paths.get("sample.txt"));
@@ -28,11 +26,13 @@ class Scan {
             for (int i = 0; i < scanFile.size(); i++) 
             {
                 String [] temp = scanFile.get(i).split(":(?!\\s)");
-                tokens.put(i, temp[0]);
+                tokens.put(temp[0], i);
             }
+            /*
             for (String s : tokens.values()) {
                 System.out.println(s);
             }
+            */
             //remove whitespace
             for (int i = 0; i < output.size(); i++) {
                String temp = output.get(i).trim();
@@ -63,14 +63,25 @@ class Scan {
                         result = "reservedword";
                     }
                     else{// TODO: continue here
-                        if(status){
-                            tokens[status] += 1;
+                        if(tokens.containsKey(status)){
+                            tokens.put(status, tokens.get(status) + 1);
                         }
                         else{
-                            tokens[status] = 1;
+                            tokens.put(status, 1);
                         }
                     }
                 }
+                if (result != "space"){
+                    f_print += "Token Discovered is " + result + " -> " + status.trim() + "\n";
+                }
+                state = 0;
+                status = "";
+            }
+            if (buffer != 1){
+                counter += 1;
+            }
+            else{
+                buffer = 0;
             }
         }
     }
