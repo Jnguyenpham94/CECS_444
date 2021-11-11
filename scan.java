@@ -22,15 +22,7 @@ class Scan {
         //Desktop dtop = Desktop.getDesktop();
         //File directory = null;
         try {
-            /*
-             * directory = new File(System.getProperty("user.dir")); dtop.open(directory);
-             * scanFile = Files.readAllLines(Paths.get(directory.toString())); for (String
-             * string : scanFile) { System.out.println(string); }
-             */
             rwords = Files.readAllLines(Paths.get("rwords.txt"));
-            //for (String string : rwords) {
-            //    System.out.println(string);
-            //}
             output = Files.readAllLines(Paths.get("sample.txt"));
             scanFile = Files.readAllLines(Paths.get("tokens.txt"));
             for (int i = 0; i < scanFile.size(); i++) 
@@ -53,14 +45,51 @@ class Scan {
         } catch (Exception e) {
             System.exit(1);
         }
-        // TODO: continue here
         while (counter < output.size()) {
+            statetable st = new statetable();
+            actiontable act = new actiontable();
+            lookuptable lk = new lookuptable();
             String token = output.get(counter);
             tokens toks = new tokens();
             int current_read = toks.getToken(token);
-            if (toks == null) {
-                
+            if (st.getTable(state, current_read) != -1 && (act.getTable(state, current_read) == 1)) {
+                status = status + toks;
             }
+            else if (st.getTable(state, current_read) == -1 && (act.getTable(state, current_read) == 2)){
+                buffer = 1;
+                var result = codes.getCodes(lk.getTable(state, current_read));
+                if (result == "id"){
+                    if (check_rword(status) == true){
+                        result = "reservedword";
+                    }
+                    else{// TODO: continue here
+                        if(status){
+                            tokens[status] += 1;
+                        }
+                        else{
+                            tokens[status] = 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    public static boolean check_rword(String word)
+    {
+        int counter = 0; 
+        int value = 0;
+        for (int i = 0; i < rwords.size(); i++){
+            if (rwords.get(counter) == word){
+                value = 1;
+            }
+            counter += 1;
+        }
+        if (value == 1){
+            return true;
+        }
+        else{
+            return false;
         }
     }
 
