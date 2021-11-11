@@ -9,7 +9,6 @@ class Scan {
     // stores the reserved words and output text for scanning
     public static List<String> rwords;
     public static List<String> output;
-    public static List<String> scanFile;
 
     public static String status, f_print, token;
     public static int state, counter, buffer, current_read = 0;
@@ -21,7 +20,6 @@ class Scan {
         try {
             rwords = Files.readAllLines(Paths.get("rwords.txt"));
             output = Files.readAllLines(Paths.get("sample.txt"));
-            scanFile = Files.readAllLines(Paths.get("tokens.txt"));
             //remove whitespace
             for (int i = 0; i < output.size(); i++) {
                String temp = output.get(i).trim();
