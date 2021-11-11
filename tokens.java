@@ -1,109 +1,107 @@
 
-
 public class tokens {
     public int getToken(String strings){
         int val = 0;
-        switch (strings) {
-            case "`":
+        if (strings == "`") 
                 val = 0;
-                break;
-            case "<":
-                val = 1;
-                break;
-            case ">":
-                val = 2;
-                break;
-            case "[":
-                val = 3;
-                break;
-            case "]":
-                val = 4;
-                break;
-            case "{":
-                val = 5;
-                break;
-            case "}":
-                val = 6;
-                break;
-            case "@":
-                val = 7;
-                break;
-            case "&":
-                val = 8;
-                break;
-            case "#":
-                val = 9;
-                break;
-            case "!":
-                val = 10;
-                break;
-            case "~":
-                val = 11;
-                break;
-            case "'":
-                val = 12;
-                break;
-            case "\"":
-                val = 13;
-                break;
-            case "$":
-                val = 14;
-                break;
-            case ":":
-                val = 15;
-                break;
-            case ";":
-                val = 16;
-                break;
-            case ".":
-                val = 17;
-                break;
-            case ",":
-                val = 18;
-                break;
-            case "+":
-                val = 19;
-                break;
-            case "-":
-                val = 20;
-                break;
-            case "/":
-                val = 21;
-                break;
-            case "\\":
-                val = 22;
-                break;
-            case "*":
-                val = 23;
-                break;
-            case "=":
-                val = 24;
-                break;
-            case "^":
-                val = 25;
-                break;
-            case "(":
-                val = 26;
-                break;
-            case ")":
-                val = 27;
-                break;
-            case "^[a-zA-Z]*$": //is alphabet in regex
-                val = 28;
-                break;
-            case "\\d+"://is digit in regex
-                val = 29;
-                break;
-            case " ":
-                val = 30;
-                break;
-            case "_":
-                val = 31;
-                break;
-            default:
-                val = 32;
-                break;
-        }
+                
+        else if (strings == "<")
+            val = 1;    
+
+        else if (strings == ">")
+            val = 2;
+
+        else if (strings == "[")
+            val = 3;
+
+        else if (strings ==  "]")
+            val = 4;
+
+        else if (strings ==  "{")
+            val = 5;
+
+        else if (strings == "}")
+            val = 6;
+
+        else if (strings == "@")
+            val = 7; 
+
+        else if (strings == "&")
+            val = 8;
+                
+        else if (strings == "#")
+            val = 9;
+                
+        else if (strings ==  "!")
+            val = 10;
+                
+        else if (strings == "~")
+            val = 11;
+            
+        else if (strings == "'")
+            val = 12;
+                
+        else if (strings == "\"")
+            val = 13;
+                
+        else if (strings == "$")
+            val = 14;
+                
+        else if (strings == ":")
+            val = 15;   
+
+        else if (strings == ";")
+            val = 16;  
+
+        else if (strings == ".")
+            val = 17;  
+
+        else if (strings == ",")
+            val = 18;    
+
+        else if (strings == "+")
+            val = 19;    
+                
+        else if (strings == "-")
+            val = 20;
+
+        else if (strings == "/")
+            val = 21;   
+
+        else if (strings == "\\")
+            val = 22; 
+
+        else if (strings == "*")
+            val = 23; 
+
+        else if (strings == "=")
+            val = 24;  
+
+        else if (strings == "^")
+            val = 25;
+
+        else if (strings == "(")
+            val = 26;
+
+        else if (strings == ")")
+            val = 27;
+
+        else if (strings == "^[a-zA-Z]*$") //is alphabet in regex
+            val = 28;
+
+        else if (strings == "\\d+")//is digit in regex
+            val = 29;
+
+        else if (strings == " ")
+            val = 30; 
+
+        else if (strings == "_")
+            val = 31;
+            
+        else
+            val = 32;
+            
         return val;
+    
     }
 }

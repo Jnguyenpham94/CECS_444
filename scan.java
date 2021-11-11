@@ -1,4 +1,6 @@
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
@@ -20,6 +22,16 @@ class Scan {
         try {
             rwords = Files.readAllLines(Paths.get("rwords.txt"));
             output = Files.readAllLines(Paths.get("sample.txt"));
+            StringBuilder contentBuilder = new StringBuilder();
+        try (BufferedReader br = new BufferedReader(new FileReader("sample.txt"))) 
+        {
+ 
+            String sCurrentLine;
+            while ((sCurrentLine = br.readLine()) != null) 
+            {
+                contentBuilder.append(sCurrentLine).append("\n");
+            }
+        }
             //remove whitespace
             for (int i = 0; i < output.size(); i++) {
                String temp = output.get(i).trim();
@@ -37,6 +49,7 @@ class Scan {
         lookuptable lk = new lookuptable();
         tokens toks = new tokens();
         while (counter < output.size()) {
+            //TODO: problem HERE!!! the token in the front is not recognized but instead the entire String is
             token = output.get(counter);
             current_read = toks.getToken(token.trim());
             if (st.getTable(state, current_read) != -1 && (act.getTable(state, current_read) == 1)) {
