@@ -3,8 +3,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
-//import java.awt.Desktop;
-//import java.io.File;
 
 class Scan {
 
@@ -18,7 +16,7 @@ class Scan {
     public static HashMap<String, Integer> tokens = new HashMap<>();
 
     // scanner stuff goes here
-    public static void myScanner() {
+    public static <T> void myScanner() {
         try {
             rwords = Files.readAllLines(Paths.get("rwords.txt"));
             output = Files.readAllLines(Paths.get("sample.txt"));
@@ -84,6 +82,9 @@ class Scan {
                 buffer = 0;
             }
         }
+        output<T> out = new output<>();
+        out.out_gui("Tokens Scanned: ", "Scanner", f_print);
+        out.output_map(tokens);
     }
 
     public static boolean check_rword(String word)
