@@ -1,7 +1,9 @@
+
+
 public class tokens {
-    public int getToken(String token){
+    public int getToken(String strings){
         int val = 0;
-        switch (token) {
+        switch (strings) {
             case "`":
                 val = 0;
                 break;
@@ -86,7 +88,7 @@ public class tokens {
             case ")":
                 val = 27;
                 break;
-            case "[a-zA-Z]+": //is alphabet in regex
+            case "^[a-zA-Z]*$": //is alphabet in regex
                 val = 28;
                 break;
             case "\\d+"://is digit in regex

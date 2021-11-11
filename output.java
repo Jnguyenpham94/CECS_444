@@ -1,7 +1,7 @@
 import java.util.HashMap;
-
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+
 public class output<T> {
     
     public <K,V> void output_map(HashMap<K,V> map){
@@ -18,6 +18,7 @@ public class output<T> {
         JTextArea t_out = new JTextArea(out_text);
         frame.add(text);
         frame.add(t_out);
+        frame.setSize(800,600);
         frame.setLayout(null);
         frame.setVisible(true);
     }

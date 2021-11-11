@@ -11,9 +11,10 @@ class Scan {
     public static List<String> output;
     public static List<String> scanFile;
 
-    public static String status, f_print;
-    public static int state, counter, buffer = 0;
+    public static String status, f_print, token;
+    public static int state, counter, buffer, current_read = 0;
     public static HashMap<String, Integer> tokens = new HashMap<>();
+    
 
     // scanner stuff goes here
     public static <T> void myScanner() {
@@ -21,35 +22,25 @@ class Scan {
             rwords = Files.readAllLines(Paths.get("rwords.txt"));
             output = Files.readAllLines(Paths.get("sample.txt"));
             scanFile = Files.readAllLines(Paths.get("tokens.txt"));
-            for (int i = 0; i < scanFile.size(); i++) 
-            {
-                String [] temp = scanFile.get(i).split(":(?!\\s)");
-                tokens.put(temp[0], i);
-            }
-            /*
-            for (String s : tokens.values()) {
-                System.out.println(s);
-            }
-            */
             //remove whitespace
             for (int i = 0; i < output.size(); i++) {
                String temp = output.get(i).trim();
                //temp = output.get(i).split("\\n|;").toString();
                output.set(i, temp);
             }
-            System.out.println(output);
+            //System.out.println(output);
         } catch (IllegalArgumentException iae) {
             System.out.println("File not found");
         } catch (Exception e) {
             System.exit(1);
         }
+        statetable st = new statetable();
+        actiontable act = new actiontable();
+        lookuptable lk = new lookuptable();
+        tokens toks = new tokens();
         while (counter < output.size()) {
-            statetable st = new statetable();
-            actiontable act = new actiontable();
-            lookuptable lk = new lookuptable();
-            String token = output.get(counter);
-            tokens toks = new tokens();
-            int current_read = toks.getToken(token);
+            token = output.get(counter);
+            current_read = toks.getToken(token.trim());
             if (st.getTable(state, current_read) != -1 && (act.getTable(state, current_read) == 1)) {
                 status = status + toks;
             }
@@ -60,7 +51,7 @@ class Scan {
                     if (check_rword(status) == true){
                         result = "reservedword";
                     }
-                    else{// TODO: continue here
+                    else{
                         if(tokens.containsKey(status)){
                             tokens.put(status, tokens.get(status) + 1);
                         }
