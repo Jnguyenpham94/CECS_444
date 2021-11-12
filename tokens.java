@@ -32,7 +32,7 @@ public class tokens {
         else if (strings.equals("#"))
             val = 9;
                 
-        else if (strings.equals( "!"))
+        else if (strings.equals("!"))
             val = 10;
                 
         else if (strings.equals("~"))
