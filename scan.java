@@ -21,7 +21,7 @@ class Scan {
     public static <T> void myScanner() {
         try {
             rwords = Files.readAllLines(Paths.get("rwords.txt"));
-            output = Files.readAllLines(Paths.get("sample.txt"));
+            output = Files.readAllLines(Paths.get("sample_output.txt"));
             StringBuilder contentBuilder = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader("sample.txt"))) 
         {
@@ -44,14 +44,17 @@ class Scan {
         } catch (Exception e) {
             System.exit(1);
         }
+
         statetable st = new statetable();
         actiontable act = new actiontable();
         lookuptable lk = new lookuptable();
         tokens toks = new tokens();
+
         while (counter < output.size()) {
             //TODO: problem HERE!!! the token in the front is not recognized but instead the entire String is
             token = output.get(counter);
-            current_read = toks.getToken(token.trim());
+            current_read = toks.getToken(token);
+
             if (st.getTable(state, current_read) != -1 && (act.getTable(state, current_read) == 1)) {
                 status = status + toks;
             }
