@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
+import javax.swing.WindowConstants;
 
 public class output<T> {
     
@@ -20,5 +21,6 @@ public class output<T> {
         frame.setSize(800,1000);
         frame.setLayout(null);
         frame.setVisible(true);
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 }

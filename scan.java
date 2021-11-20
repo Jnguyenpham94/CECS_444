@@ -54,7 +54,7 @@ class Scan {
 
             if (st.getTable(state, current_read) != -1 && (act.getTable(state, current_read) == 1)) {
                 status = status + token;
-                status = status.replaceAll("null", "\n");
+                //status = status.replaceAll("null", "\n");
             }
             else if (st.getTable(state, current_read) == -1 && (act.getTable(state, current_read) == 2)){
                 buffer = 1;
@@ -89,7 +89,7 @@ class Scan {
         }
         output<T> out = new output<>();
         out.out_gui("Tokens Scanned: ", "Scanner", f_print);
-        out.output_map(tokens);
+        out.output_map(tokens); //this is empty :(
     }
 
     public static boolean check_rword(String word)
