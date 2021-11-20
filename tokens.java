@@ -41,7 +41,7 @@ public class tokens {
         else if (token == ('\''))
             val = 12;
                 
-        else if (token == ('\''))
+        else if (token == ('\"'))
             val = 13;
                 
         else if (token == ('$'))
@@ -98,9 +98,10 @@ public class tokens {
         else if (token == ('_'))
             val = 31;
             
-        else
+        else if (token == ('\n'))
             val = 32;
-            
+        else 
+            val = 33;
         return val;
     
     }

@@ -14,11 +14,10 @@ public class output<T> {
 
     public void out_gui(String out_message, String out_title, String out){
         JFrame frame = new JFrame(out_title);
-        JTextArea text = new JTextArea(out_message);
-        JTextArea t_out = new JTextArea(out);
-        frame.add(text);
+        JTextArea t_out = new JTextArea(out + "\n");
+        t_out.setSize(600, 500);
         frame.add(t_out);
-        frame.setSize(800,600);
+        frame.setSize(800,1000);
         frame.setLayout(null);
         frame.setVisible(true);
     }

@@ -18,15 +18,13 @@ class Scan {
     public static int state, counter, buffer, current_read = 0;
     public static HashMap<String, Integer> tokens = new HashMap<>();
     
-
-    // scanner stuff goes here
     public static <T> void myScanner() {
         try {
             rwords = Files.readAllLines(Paths.get("rwords.txt"));
-            BufferedReader br = new BufferedReader(new FileReader("sample.txt"));
+            BufferedReader br = new BufferedReader(new FileReader("sample_short.txt"));
             try {
                 StringBuilder sb = new StringBuilder();
-                String line = br.readLine();
+                String line = br.readLine().strip();
             
                 while (line != null) {
                     sb.append(line);
@@ -48,6 +46,7 @@ class Scan {
         actiontable act = new actiontable();
         lookuptable lk = new lookuptable();
         tokens toks = new tokens();
+        everything.trim();
         output = everything.toCharArray();
         while (counter < output.length) {
             token = output[counter];
@@ -55,6 +54,7 @@ class Scan {
 
             if (st.getTable(state, current_read) != -1 && (act.getTable(state, current_read) == 1)) {
                 status = status + token;
+                status = status.replaceAll("null", "\n");
             }
             else if (st.getTable(state, current_read) == -1 && (act.getTable(state, current_read) == 2)){
                 buffer = 1;
@@ -74,16 +74,18 @@ class Scan {
                 }
                 if (result != "space"){
                     f_print += "Token Discovered is " + result + " -> " + status.trim() + "\n";
+                    f_print = f_print.replaceAll("null", "\n");
                 }
                 state = 0;
                 status = "";
             }
-            if (buffer != 1){
+            if(current_read == 33 || current_read == 32){ //weird java terminating line char array case
                 counter += 1;
             }
-            else{
+            if (buffer != 1)
+                counter += 1;
+            else
                 buffer = 0;
-            }
         }
         output<T> out = new output<>();
         out.out_gui("Tokens Scanned: ", "Scanner", f_print);
