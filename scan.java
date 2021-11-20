@@ -37,7 +37,7 @@ class Scan {
             } finally {
                 br.close();
             }
-            System.out.println(everything);
+            //System.out.println(everything);
         } catch (IllegalArgumentException iae) {
             System.out.println("File not found");
         } catch (Exception e) {
@@ -54,7 +54,7 @@ class Scan {
             current_read = toks.getToken(token);
 
             if (st.getTable(state, current_read) != -1 && (act.getTable(state, current_read) == 1)) {
-                status = status + toks;
+                status = status + token;
             }
             else if (st.getTable(state, current_read) == -1 && (act.getTable(state, current_read) == 2)){
                 buffer = 1;
