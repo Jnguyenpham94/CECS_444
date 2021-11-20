@@ -10,9 +10,11 @@ class Scan {
 
     // stores the reserved words and output text for scanning
     public static List<String> rwords;
-    public static List<String> output;
+    public static char[] output;
+    //public static String output;
 
-    public static String status, f_print, token;
+    public static String status, f_print, everything;
+    public static char token;
     public static int state, counter, buffer, current_read = 0;
     public static HashMap<String, Integer> tokens = new HashMap<>();
     
@@ -21,24 +23,21 @@ class Scan {
     public static <T> void myScanner() {
         try {
             rwords = Files.readAllLines(Paths.get("rwords.txt"));
-            output = Files.readAllLines(Paths.get("sample_output.txt"));
-            StringBuilder contentBuilder = new StringBuilder();
-        try (BufferedReader br = new BufferedReader(new FileReader("sample.txt"))) 
-        {
- 
-            String sCurrentLine;
-            while ((sCurrentLine = br.readLine()) != null) 
-            {
-                contentBuilder.append(sCurrentLine).append("\n");
+            BufferedReader br = new BufferedReader(new FileReader("sample.txt"));
+            try {
+                StringBuilder sb = new StringBuilder();
+                String line = br.readLine();
+            
+                while (line != null) {
+                    sb.append(line);
+                    sb.append(System.lineSeparator());
+                    line = br.readLine();
+                }
+                everything = sb.toString();
+            } finally {
+                br.close();
             }
-        }
-            //remove whitespace
-            for (int i = 0; i < output.size(); i++) {
-               String temp = output.get(i).trim();
-               //temp = output.get(i).split("\\n|;").toString();
-               output.set(i, temp);
-            }
-            //System.out.println(output);
+            System.out.println(everything);
         } catch (IllegalArgumentException iae) {
             System.out.println("File not found");
         } catch (Exception e) {
@@ -49,10 +48,9 @@ class Scan {
         actiontable act = new actiontable();
         lookuptable lk = new lookuptable();
         tokens toks = new tokens();
-
-        while (counter < output.size()) {
-            //TODO: problem HERE!!! the token in the front is not recognized but instead the entire String is
-            token = output.get(counter);
+        output = everything.toCharArray();
+        while (counter < output.length) {
+            token = output[counter];
             current_read = toks.getToken(token);
 
             if (st.getTable(state, current_read) != -1 && (act.getTable(state, current_read) == 1)) {

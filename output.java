@@ -12,10 +12,10 @@ public class output<T> {
         }
     }
 
-    public void out_gui(String out_message, String out_title, String out_text){
+    public void out_gui(String out_message, String out_title, String out){
         JFrame frame = new JFrame(out_title);
         JTextArea text = new JTextArea(out_message);
-        JTextArea t_out = new JTextArea(out_text);
+        JTextArea t_out = new JTextArea(out);
         frame.add(text);
         frame.add(t_out);
         frame.setSize(800,600);
