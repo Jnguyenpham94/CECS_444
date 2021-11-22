@@ -46,10 +46,10 @@ class Scan {
         actiontable act = new actiontable();
         lookuptable lk = new lookuptable();
         tokens toks = new tokens();
-        everything.trim();
-        output = everything.toCharArray();
+        output = everything.strip().toCharArray();
         while (counter < output.length) {
             token = output[counter];
+            
             current_read = toks.getToken(token);
 
             if (st.getTable(state, current_read) != -1 && (act.getTable(state, current_read) == 1)) {
@@ -73,7 +73,7 @@ class Scan {
                     }
                 }
                 if (result != "space"){
-                    f_print += "Token Discovered is " + result + " -> " + status.trim() + "\n";
+                    f_print += "Token Discovered is " + result + " -> " + status.strip() + "\n";
                     f_print = f_print.replaceAll("null", "\n");
                 }
                 state = 0;
