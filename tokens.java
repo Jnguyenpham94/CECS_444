@@ -98,7 +98,7 @@ public class tokens {
         else if (token == ('_'))
             val = 31;
             
-        else if (token == ('\n'))
+        else if (token == ('\n') || token == '\r')
             val = 32;
         else 
             val = 33;

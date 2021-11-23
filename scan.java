@@ -49,6 +49,7 @@ class Scan {
         lookuptable lk = new lookuptable();
         tokens toks = new tokens();
         output = everything.strip().toCharArray();
+        //every line ends with \r carriage return then \n follows
         while (counter < output.length) {
             token = output[counter];
             
