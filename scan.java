@@ -13,7 +13,9 @@ class Scan {
     public static char[] output;
     //public static String output;
 
-    public static String status, f_print, everything;
+    public static String status = "";
+    public static String f_print= "";
+    public static String everything = "";
     public static char token;
     public static int state, counter, buffer, current_read = 0;
     public static HashMap<String, Integer> tokens = new HashMap<>();
@@ -54,7 +56,6 @@ class Scan {
 
             if (st.getTable(state, current_read) != -1 && (act.getTable(state, current_read) == 1)) {
                 status = status + token;
-                //status = status.replaceAll("null", "\n");
             }
             else if (st.getTable(state, current_read) == -1 && (act.getTable(state, current_read) == 2)){
                 buffer = 1;
@@ -79,9 +80,9 @@ class Scan {
                 state = 0;
                 status = "";
             }
-            if(current_read == 33 || current_read == 32){ //weird java terminating line char array case
-                counter += 1;
-            }
+            //if(current_read == 33 || current_read == 32){ //weird java terminating line char array case
+             //   counter += 1;
+            //}
             if (buffer != 1)
                 counter += 1;
             else
