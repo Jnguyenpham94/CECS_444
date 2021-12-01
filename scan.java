@@ -1,5 +1,6 @@
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -113,6 +114,9 @@ class Scan {
     }
 
     public static void main(String[] args) {
-        myScanner();
+        //myScanner();
+        MyParser parse = new MyParser();
+        File p = new File("sample_output.txt");
+        parse.parseText(p);
     }
 }
