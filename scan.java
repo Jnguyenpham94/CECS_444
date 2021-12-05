@@ -7,6 +7,8 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 
+import Parser.MyParser;
+
 class Scan {
 
     // stores the reserved words and output text for scanning
