@@ -1,0 +1,4 @@
+Token Discovered is reservedword -> using
+Token Discovered is reservedword -> namespace
+Token Discovered is id -> std
+Token Discovered is semicolon -> ;
