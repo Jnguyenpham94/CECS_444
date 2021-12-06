@@ -32,5 +32,8 @@ public class MyParser {
             System.out.println("Input Error");
         }
         System.out.println(everything);
+        everything = everything.replaceAll("Token Discovered is", "");
+        System.out.println("REPLACED");
+        System.out.println(everything);
     }
 }
