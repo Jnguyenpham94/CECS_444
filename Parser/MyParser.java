@@ -13,7 +13,7 @@ public class MyParser {
     public static String everything = "";
     public static ArrayList<String> scanResult = new ArrayList<>();
     public static ArrayList<String> valResult = new ArrayList<>();
-    public Stack<String> stk = new Stack<>();
+    public Stack<Integer> stk = new Stack<>();
     int counter = 0;
 
     public void parseText(String file) {
@@ -46,7 +46,7 @@ public class MyParser {
         everything = everything.replaceAll(" ->", "");
         System.out.println("REPLACED");
         System.out.println(everything);
-        stk.push("1");
+        stk.push(1);
         String tem[] = everything.strip().split(" ");
         //fill arraylist with scanned results
         for (String string : tem) {
@@ -64,6 +64,11 @@ public class MyParser {
         
         //contains final print stuff
         ArrayList<String> parserPrint = new ArrayList<>();
+
+        int topStack = 0;
+        while (valResult.size() > 0) {
+            topStack = stk.lastElement() - 1;
+        }
     }
 
     public void removeFromList(ArrayList<String> list, String word) {
