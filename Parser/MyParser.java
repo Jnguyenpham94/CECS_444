@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Stack;
 
 public class MyParser {
@@ -57,6 +58,12 @@ public class MyParser {
         removeFromList(scanResult, "comment");
         System.out.print(scanResult);
         
+        //reverse the arraylists for stack popping
+        Collections.reverse(valResult);
+        Collections.reverse(scanResult);
+        
+        //contains final print stuff
+        ArrayList<String> parserPrint = new ArrayList<>();
     }
 
     public void removeFromList(ArrayList<String> list, String word) {
