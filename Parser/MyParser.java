@@ -12,9 +12,10 @@ public class MyParser {
 
     public static String everything = "";
     public static ArrayList<String> scanResult = new ArrayList<>();
-    public static ArrayList<String> valResult = new ArrayList<>();
+    public static ArrayList<Integer> valResult = new ArrayList<>();
     public Stack<Integer> stk = new Stack<>();
     int counter = 0;
+    int topStack = 0;
 
     public void parseText(String file) {
         try {
@@ -64,10 +65,47 @@ public class MyParser {
         
         //contains final print stuff
         ArrayList<String> parserPrint = new ArrayList<>();
+        
+        ParserTokens pt = new ParserTokens();
+        while(counter < scanResult.size()){
+            valResult.add(pt.getToken(Integer.parseInt(scanResult.get(counter))));
+        }
 
-        int topStack = 0;
         while (valResult.size() > 0) {
-            topStack = stk.lastElement() - 1;
+            try {
+                topStack = stk.lastElement(); //top of stack aka first to be popped
+            } catch (Exception e) {
+                try {
+                    topStack = stk.firstElement(); //bottom of stack
+                } catch (Exception f) {
+                    System.out.println("STACK EMPTY. Something went wrong. GOODBYE!");
+                    System.exit(1);
+                }
+            }
+            
+        }
+
+        var tokenNum = valResult.get(valResult.size()-1);
+        var currentToken = scanResult.get(scanResult.size() - 1);
+
+        if (topStack > 0) {
+            
+        }
+        else if(topStack <= tokenNum){
+            parserPrint += "Match and Pop" + " ";
+            
+            if(currentToken == "stop"){
+                parserPrint += "Goooaaal!!!" + "\n";
+                System.exit(1);
+            }
+            //popping values from stack and arraylists
+            stk.pop();
+            scanResult.remove(scanResult.size() - 1);
+            valResult.remove(valResult.size() - 1);
+        }
+        else{
+            System.out.println("ERROR. DEAD");
+            System.exit(1);
         }
     }
 
