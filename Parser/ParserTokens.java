@@ -66,7 +66,7 @@ public class ParserTokens {
         put(60, new int[]{-46});
     }};
     
-    public String getToken(int token) {
+    public static String getToken(int token) {
         var tVal = "0";
         try{
             tVal = token_lookup[token];
@@ -77,7 +77,7 @@ public class ParserTokens {
         return String.valueOf(Integer.parseInt(tVal) * -1);
     }
 
-    public int[] getVal(int token) {
+    public static int[] getVal(int token) {
         int[] pval = {};
         if (token == 0) {
             System.out.println("Read error");
