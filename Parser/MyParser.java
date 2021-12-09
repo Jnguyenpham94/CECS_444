@@ -64,7 +64,7 @@ public class MyParser {
         Collections.reverse(scanResult);
         
         //contains final print stuff
-        ArrayList<String> parserPrint = new ArrayList<>();
+        String parserPrint = "";
         
         ParserTokens pt = new ParserTokens();
         while(counter < scanResult.size()){
