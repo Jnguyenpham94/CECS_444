@@ -42,16 +42,17 @@ public class MyParser {
         } catch (IOException io) {
             System.out.println("Input Error");
         }
-        System.out.println(everything);
+        // System.out.println(everything);
 
         // removing the unneeded words
         // remove "Token Discovered is " & "->""
         everything = everything.replaceAll("Token Discovered is", "");
         everything = everything.replaceAll(" ->", "");
-        System.out.println("REPLACED");
-        System.out.println(everything);
+        // System.out.println("REPLACED");
+        // System.out.println(everything);
         stk.push(1);
         String tem[] = everything.strip().split(" ");
+
         // fill arraylist with scanned results
         for (String string : tem) {
             string = string.trim();
@@ -62,14 +63,17 @@ public class MyParser {
         removeFromList(scanResult, "comment");
         System.out.print(scanResult);
 
+        while (counter < scanResult.size()) {
+            //TODO: FAILS HERE!!!
+            int result = Integer.parseInt(scanResult.get(counter));
+            valResult.add(Integer.parseInt(ParserTokens.getToken(result)));
+            counter++;
+        }
+        System.out.print(valResult);
+
         // reverse the arraylists for stack popping
         Collections.reverse(valResult);
         Collections.reverse(scanResult);
-
-        while (counter < scanResult.size()) {
-            int result = Integer.parseInt(scanResult.get(counter));
-            valResult.add(Integer.parseInt(ParserTokens.getToken(result)));
-        }
 
         while (valResult.size() > 0) {
             try {
@@ -91,9 +95,11 @@ public class MyParser {
             int tableEntry = parsetable.getTable(topStack, Math.abs(tokenNum));
             parserPrint += "Fire" + " " + String.valueOf(tableEntry) + "\n";
             stk.pop();
-            //TODO: add to stack
-            //stk.add(ParserTokens.getVal(tableEntry));
-
+            // TODO: add to stack
+            int[] temp = ParserTokens.getVal(tableEntry);
+            for (int i : temp) {
+                stk.add(i);
+            }
         } else if (topStack <= tokenNum) {
             parserPrint += "Match and Pop" + " " + currentToken + "\n";
 

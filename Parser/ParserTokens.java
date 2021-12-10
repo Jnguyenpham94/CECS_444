@@ -1,9 +1,6 @@
 package Parser;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 
 public class ParserTokens {
     
@@ -80,7 +77,7 @@ public class ParserTokens {
         return String.valueOf(Integer.parseInt(tVal) * -1);
     }
 
-    public static List<int[]> getVal(int token) {
+    public static int[] getVal(int token) {
         int[] pval;
         if (token == 0) {
             System.out.println("Read error");
@@ -98,9 +95,9 @@ public class ParserTokens {
         try {
             pval = valMap.get(token);
         } catch (Exception e) {
-            return new ArrayList<>(); //empty anon array
+            return new int[]{}; //empty anon array
         }
         
-        return Arrays.asList(pval);
+        return pval;
     }
 }
