@@ -91,13 +91,15 @@ public class MyParser {
             int tableEntry = parsetable.getTable(topStack, Math.abs(tokenNum));
             parserPrint += "Fire" + " " + String.valueOf(tableEntry) + "\n";
             stk.pop();
+            //TODO: add to stack
             //stk.add(ParserTokens.getVal(tableEntry));
 
         } else if (topStack <= tokenNum) {
-            parserPrint += "Match and Pop" + " ";
+            parserPrint += "Match and Pop" + " " + currentToken + "\n";
 
             if (currentToken == "stop") {
                 parserPrint += "Goooaaal!!!" + "\n";
+                output.out_gui("Parser:", "Parse Results", parserPrint);
                 System.exit(1);
             }
             // popping values from stack and arraylists
