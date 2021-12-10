@@ -88,7 +88,11 @@ public class MyParser {
         var currentToken = scanResult.get(scanResult.size() - 1);
 
         if (topStack > 0) {
-            //TODO: I AM HERE
+            int tableEntry = parsetable.getTable(topStack, Math.abs(tokenNum));
+            parserPrint += "Fire" + " " + String.valueOf(tableEntry) + "\n";
+            stk.pop();
+            //stk.add(ParserTokens.getVal(tableEntry));
+
         } else if (topStack <= tokenNum) {
             parserPrint += "Match and Pop" + " ";
 
