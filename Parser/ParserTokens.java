@@ -6,7 +6,7 @@ import java.util.HashMap;
 public class ParserTokens {
     
     static String token_lookup[] = {"0","library","program","id",";","var",":",",","int","real","sci","currency",
-                        "string","begin","return",":=","device_open","file","for","to","do","repeat",
+                        "string","start","return",":=","device_open","file","for","to","do","repeat",
                         "until","(",")","while","if","then","else","device_close","read_from_device",
                         "write_to_device","writeln","readln","<",">","<=",">=","==","!=","+","-","*",
                         "/","abs","fabs","stop","$"};
