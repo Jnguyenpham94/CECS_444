@@ -1,3 +1,4 @@
+package MyScan;
 import java.util.HashMap;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;

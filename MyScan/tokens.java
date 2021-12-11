@@ -1,3 +1,4 @@
+package MyScan;
 
 public class tokens {
     public int getToken(char token){

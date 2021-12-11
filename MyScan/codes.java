@@ -1,3 +1,4 @@
+package MyScan;
 public class codes {                //  0          1            2                 3              4                      
     static String [] lookup_codes = {"!accept",   "grave",     "leftbracket", "rightbracket", "leftbrace",  //0-4
                                     "rightbrace", "leftsquig", "rightsquig",  "atsymbol",     "ampersand",  //5-9
