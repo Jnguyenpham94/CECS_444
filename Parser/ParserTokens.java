@@ -1,5 +1,6 @@
 package Parser;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class ParserTokens {
@@ -66,15 +67,15 @@ public class ParserTokens {
         put(60, new int[]{-46});
     }};
     
-    public static String getToken(int token) {
-        var tVal = "0";
+    public static int getToken(String token) {
+        int tVal = 0;
         try{
-            tVal = token_lookup[token];
+            tVal = Arrays.asList(token_lookup).indexOf(token);
         }
         catch(Exception b){
-            return "0";
+            return 0;
         }
-        return String.valueOf(Integer.parseInt(tVal) * -1);
+        return tVal * -1;
     }
 
     public static int[] getVal(int token) {

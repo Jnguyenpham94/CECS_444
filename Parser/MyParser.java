@@ -64,19 +64,20 @@ public class MyParser {
         System.out.print(scanResult);
 
         while (counter < scanResult.size()) {
-            //TODO: FAILS HERE!!!
-            int result = Integer.parseInt(scanResult.get(counter));
-            valResult.add(Integer.parseInt(ParserTokens.getToken(result)));
+            //int result = Integer.parseInt(scanResult.get(counter));
+            valResult.add(ParserTokens.getToken(scanResult.get(counter)));
             counter++;
         }
-        System.out.print(valResult);
 
         // reverse the arraylists for stack popping
         Collections.reverse(valResult);
         Collections.reverse(scanResult);
 
+        System.out.print(valResult);
+        System.out.println(scanResult);
+
         while (valResult.size() > 0) {
-            try {
+            try {//TODO: INFI loop here!!!
                 topStack = stk.lastElement(); // top of stack aka first to be popped
             } catch (Exception e) {
                 try {
@@ -95,7 +96,6 @@ public class MyParser {
             int tableEntry = parsetable.getTable(topStack, Math.abs(tokenNum));
             parserPrint += "Fire" + " " + String.valueOf(tableEntry) + "\n";
             stk.pop();
-            // TODO: add to stack
             int[] temp = ParserTokens.getVal(tableEntry);
             for (int i : temp) {
                 stk.add(i);
