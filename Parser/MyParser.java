@@ -64,7 +64,7 @@ public class MyParser {
         System.out.print(scanResult);
 
         while (counter < scanResult.size()) {
-            //int result = Integer.parseInt(scanResult.get(counter));
+            // int result = Integer.parseInt(scanResult.get(counter));
             valResult.add(ParserTokens.getToken(scanResult.get(counter)));
             counter++;
         }
@@ -77,7 +77,7 @@ public class MyParser {
         System.out.println(scanResult);
 
         while (valResult.size() > 0) {
-            try {//TODO: INFI loop here!!!
+            try {
                 topStack = stk.lastElement(); // top of stack aka first to be popped
             } catch (Exception e) {
                 try {
@@ -87,34 +87,33 @@ public class MyParser {
                     System.exit(1);
                 }
             }
-        }
+            var tokenNum = valResult.get(valResult.size() - 1);
+            var currentToken = scanResult.get(scanResult.size() - 1);
 
-        var tokenNum = valResult.get(valResult.size() - 1);
-        var currentToken = scanResult.get(scanResult.size() - 1);
+            if (topStack > 0) {
+                int tableEntry = parsetable.getTable(topStack, Math.abs(tokenNum));
+                parserPrint += "Fire" + " " + String.valueOf(tableEntry) + "\n";
+                stk.pop();
+                int[] temp = ParserTokens.getVal(tableEntry);
+                for (int i : temp) {
+                    stk.add(i);
+                }
+            } else if (topStack <= tokenNum) {
+                parserPrint += "Match and Pop" + " " + currentToken + "\n";
 
-        if (topStack > 0) {
-            int tableEntry = parsetable.getTable(topStack, Math.abs(tokenNum));
-            parserPrint += "Fire" + " " + String.valueOf(tableEntry) + "\n";
-            stk.pop();
-            int[] temp = ParserTokens.getVal(tableEntry);
-            for (int i : temp) {
-                stk.add(i);
-            }
-        } else if (topStack <= tokenNum) {
-            parserPrint += "Match and Pop" + " " + currentToken + "\n";
-
-            if (currentToken == "stop") {
-                parserPrint += "Goooaaal!!!" + "\n";
-                output.out_gui("Parser:", "Parse Results", parserPrint);
+                if (currentToken == "stop") {
+                    parserPrint += "Goooaaal!!!" + "\n";
+                    output.out_gui("Parser:", "Parse Results", parserPrint);
+                    System.exit(1);
+                }
+                // popping values from stack and arraylists
+                stk.pop();
+                scanResult.remove(scanResult.size() - 1);
+                valResult.remove(valResult.size() - 1);
+            } else {
+                System.out.println("ERROR. DEAD");
                 System.exit(1);
             }
-            // popping values from stack and arraylists
-            stk.pop();
-            scanResult.remove(scanResult.size() - 1);
-            valResult.remove(valResult.size() - 1);
-        } else {
-            System.out.println("ERROR. DEAD");
-            System.exit(1);
         }
     }
 
